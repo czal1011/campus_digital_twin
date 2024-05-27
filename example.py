@@ -29,10 +29,12 @@ class SimpleTopo(Topo):
 		
 		# link them together
 		self.addLink(client, s1)
-		self.addLink(server, s3, delay='1000ms', loss=5)
+		self.addLink(server, s3)
 		
 		self.addLink(s1, s2)
 		self.addLink(s2, s3)
+
+
 # create topology
 def createTopo(**kwargs):
 	topo = SimpleTopo()
@@ -42,5 +44,8 @@ if __name__ == '__main__':
 	lg.setLogLevel('info')
 	net = createTopo()
 	net.start()
+	print("Testing bandwidth between client and server")
+	net.iperf(net.get("client", "server"))
+	print("iperf test done, starting CLI")
 	CLI(net)
 	net.stop()
