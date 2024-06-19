@@ -36,16 +36,38 @@ class SimpleTopo(Topo):
 
 
 # create topology
-def createTopo(**kwargs):
+def createTopo(sdn_controller, **kwargs):
 	topo = SimpleTopo()
-	return Mininet(topo=topo, link=TCLink, controller=OVSController, **kwargs)
+	return Mininet(topo=topo, link=TCLink, controller=sdn_controller, **kwargs)
+
+def modifyTopo(net):
+	topo = net.topo
+	peter = topo.addHost('peter', ip='10.0.0.10')
+	topo.addLink(peter, 's2')
 
 if __name__ == '__main__':
+	c = OVSController("controller")
 	lg.setLogLevel('info')
-	net = createTopo()
+	net = createTopo(c, listenPort=6654)
 	net.start()
-	print("Testing bandwidth between client and server")
-	net.iperf(net.get("client", "server"))
-	print("iperf test done, starting CLI")
+	# print("Testing bandwidth between client and server (iperf)")
+	# net.iperf(net.get("client", "server"))
+	# print("iperf test done, starting CLI")
+	print(f"Controller IP/Port: {c.ip}:{c.port}")
+	print(f"Hosts ({len(net.hosts)}):")
+	for host in net.hosts:
+		print(f"> Name: {host}, IP: {host.IP()}, MAC: {host.MAC()}, Usable Ports: ", end='')
+		for port in host.ports:
+			print(f"{port}", end='')
+		print() # new line
+	#CLI(net)
+	print("CLI closed, dumping flows...")
+	c.cmdPrint(f"dpctl dump-flows tcp:localhost:6654")
+
+	print("Adding another node...")
+	peter = net.topo.addHost('peter', ip='10.0.0.10')
+	net.topo.addLink(peter, 's2')
 	CLI(net)
+	
+	print("\n### Stopping Mininet...\n")
 	net.stop()
