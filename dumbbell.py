@@ -67,12 +67,12 @@ def monitorHosts(controller, time=10, packetsize=56, **netkwargs):
 	net['h3'].cmd('echo >', outfiles['h3'])
 	net['h3'].cmd('echo >', errfiles['h3'])
 		
-	net['h1'].cmdPrint(f'ping -s {packetsize}', net['h4'].IP(), '>', outfiles['h1'], '2>', errfiles['h1'], '&')
-	net['h2'].cmdPrint(f'ping -s {packetsize}', net['h5'].IP(), '>', outfiles['h2'], '2>', errfiles['h2'], '&')
-	net['h3'].cmdPrint(f'ping -s {packetsize}', net['h6'].IP(), '>', outfiles['h3'], '2>', errfiles['h3'], '&')
+	net['h1'].cmdPrint(f'ping -v -c 30 -s {packetsize}', net['h4'].IP(), '>', outfiles['h1'], '2>', errfiles['h1'], '&')
+	net['h2'].cmdPrint(f'ping -v -c 30 -s {packetsize}', net['h5'].IP(), '>', outfiles['h2'], '2>', errfiles['h2'], '&')
+	net['h3'].cmdPrint(f'ping -v -c 30 -s {packetsize}', net['h6'].IP(), '>', outfiles['h3'], '2>', errfiles['h3'], '&')
 	
 	print(f"Monitoring output for {time} seconds...")
-	for h, line in monitorFiles(outfiles, time, timeoutms=500):
+	for h, line in monitorFiles(outfiles, time+1, timeoutms=500):
 		if h:
 			print(f"[{h}], {line}")
 	for h in hosts:

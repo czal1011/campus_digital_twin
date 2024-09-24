@@ -1,0 +1,20 @@
+PING 10.0.0.4 (10.0.0.4) 1432(1460) bytes of data.
+From 10.0.0.1 icmp_seq=1 Destination Host Unreachable
+From 10.0.0.1 icmp_seq=2 Destination Host Unreachable
+From 10.0.0.1 icmp_seq=3 Destination Host Unreachable
+1440 bytes from 10.0.0.4: icmp_seq=4 ttl=64 time=2419 ms
+1440 bytes from 10.0.0.4: icmp_seq=8 ttl=64 time=182 ms
+1440 bytes from 10.0.0.4: icmp_seq=10 ttl=64 time=183 ms
+1440 bytes from 10.0.0.4: icmp_seq=11 ttl=64 time=184 ms
+1440 bytes from 10.0.0.4: icmp_seq=12 ttl=64 time=182 ms
+1440 bytes from 10.0.0.4: icmp_seq=15 ttl=64 time=386 ms
+1440 bytes from 10.0.0.4: icmp_seq=16 ttl=64 time=190 ms
+1440 bytes from 10.0.0.4: icmp_seq=17 ttl=64 time=183 ms
+1440 bytes from 10.0.0.4: icmp_seq=18 ttl=64 time=193 ms
+1440 bytes from 10.0.0.4: icmp_seq=19 ttl=64 time=193 ms
+1440 bytes from 10.0.0.4: icmp_seq=21 ttl=64 time=192 ms
+1440 bytes from 10.0.0.4: icmp_seq=22 ttl=64 time=192 ms
+1440 bytes from 10.0.0.4: icmp_seq=23 ttl=64 time=186 ms
+1440 bytes from 10.0.0.4: icmp_seq=27 ttl=64 time=183 ms
+1440 bytes from 10.0.0.4: icmp_seq=29 ttl=64 time=184 ms
+1440 bytes from 10.0.0.4: icmp_seq=30 ttl=64 time=188 ms

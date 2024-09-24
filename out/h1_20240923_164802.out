@@ -1,0 +1,16 @@
+PING 10.0.0.4 (10.0.0.4) 1432(1460) bytes of data.
+1440 bytes from 10.0.0.4: icmp_seq=1 ttl=64 time=1401 ms
+1440 bytes from 10.0.0.4: icmp_seq=2 ttl=64 time=373 ms
+1440 bytes from 10.0.0.4: icmp_seq=4 ttl=64 time=192 ms
+1440 bytes from 10.0.0.4: icmp_seq=6 ttl=64 time=182 ms
+1440 bytes from 10.0.0.4: icmp_seq=7 ttl=64 time=184 ms
+1440 bytes from 10.0.0.4: icmp_seq=14 ttl=64 time=182 ms
+1440 bytes from 10.0.0.4: icmp_seq=16 ttl=64 time=183 ms
+1440 bytes from 10.0.0.4: icmp_seq=18 ttl=64 time=189 ms
+1440 bytes from 10.0.0.4: icmp_seq=19 ttl=64 time=182 ms
+1440 bytes from 10.0.0.4: icmp_seq=20 ttl=64 time=183 ms
+1440 bytes from 10.0.0.4: icmp_seq=21 ttl=64 time=182 ms
+1440 bytes from 10.0.0.4: icmp_seq=22 ttl=64 time=182 ms
+1440 bytes from 10.0.0.4: icmp_seq=25 ttl=64 time=182 ms
+1440 bytes from 10.0.0.4: icmp_seq=26 ttl=64 time=182 ms
+1440 bytes from 10.0.0.4: icmp_seq=30 ttl=64 time=183 ms
