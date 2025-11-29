@@ -1,0 +1,7 @@
+ai->ai_family: AF_INET, ai->ai_canonname: '10.0.0.5'
+PING 10.0.0.5 (10.0.0.5) 8184(8212) bytes of data.
+[1764086952.271629] 8192 bytes from 10.0.0.5: icmp_seq=8 ident=12408 ttl=64 time=267 ms
+
+--- 10.0.0.5 ping statistics ---
+30 packets transmitted, 1 received, 96.6667% packet loss, time 29706ms
+rtt min/avg/max/mdev = 266.925/266.925/266.925/0.000 ms

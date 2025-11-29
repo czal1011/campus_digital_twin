@@ -1,0 +1,19 @@
+ai->ai_family: AF_INET, ai->ai_canonname: '10.0.0.5'
+PING 10.0.0.5 (10.0.0.5) 1432(1460) bytes of data.
+1440 bytes from 10.0.0.5: icmp_seq=3 ident=4065 ttl=64 time=192 ms
+1440 bytes from 10.0.0.5: icmp_seq=4 ident=4065 ttl=64 time=184 ms
+1440 bytes from 10.0.0.5: icmp_seq=6 ident=4065 ttl=64 time=188 ms
+1440 bytes from 10.0.0.5: icmp_seq=7 ident=4065 ttl=64 time=186 ms
+1440 bytes from 10.0.0.5: icmp_seq=11 ident=4065 ttl=64 time=198 ms
+1440 bytes from 10.0.0.5: icmp_seq=13 ident=4065 ttl=64 time=256 ms
+1440 bytes from 10.0.0.5: icmp_seq=21 ident=4065 ttl=64 time=182 ms
+1440 bytes from 10.0.0.5: icmp_seq=22 ident=4065 ttl=64 time=181 ms
+1440 bytes from 10.0.0.5: icmp_seq=23 ident=4065 ttl=64 time=184 ms
+1440 bytes from 10.0.0.5: icmp_seq=24 ident=4065 ttl=64 time=186 ms
+1440 bytes from 10.0.0.5: icmp_seq=27 ident=4065 ttl=64 time=188 ms
+1440 bytes from 10.0.0.5: icmp_seq=28 ident=4065 ttl=64 time=187 ms
+1440 bytes from 10.0.0.5: icmp_seq=30 ident=4065 ttl=64 time=218 ms
+
+--- 10.0.0.5 ping statistics ---
+30 packets transmitted, 13 received, 56.6667% packet loss, time 29463ms
+rtt min/avg/max/mdev = 181.239/194.667/255.546/19.781 ms

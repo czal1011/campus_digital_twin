@@ -1,0 +1,20 @@
+ai->ai_family: AF_INET, ai->ai_canonname: '10.0.0.6'
+PING 10.0.0.6 (10.0.0.6) 1432(1460) bytes of data.
+[1764086747.358540] 1440 bytes from 10.0.0.6: icmp_seq=4 ident=11092 ttl=64 time=211 ms
+[1764086750.428302] 1440 bytes from 10.0.0.6: icmp_seq=7 ident=11092 ttl=64 time=188 ms
+[1764086751.435192] 1440 bytes from 10.0.0.6: icmp_seq=8 ident=11092 ttl=64 time=194 ms
+[1764086752.448240] 1440 bytes from 10.0.0.6: icmp_seq=9 ident=11092 ttl=64 time=205 ms
+[1764086754.501668] 1440 bytes from 10.0.0.6: icmp_seq=11 ident=11092 ttl=64 time=193 ms
+[1764086760.652935] 1440 bytes from 10.0.0.6: icmp_seq=17 ident=11092 ttl=64 time=197 ms
+[1764086761.647787] 1440 bytes from 10.0.0.6: icmp_seq=18 ident=11092 ttl=64 time=191 ms
+[1764086763.645246] 1440 bytes from 10.0.0.6: icmp_seq=20 ident=11092 ttl=64 time=184 ms
+[1764086765.712155] 1440 bytes from 10.0.0.6: icmp_seq=22 ident=11092 ttl=64 time=202 ms
+[1764086766.744891] 1440 bytes from 10.0.0.6: icmp_seq=23 ident=11092 ttl=64 time=230 ms
+[1764086768.780566] 1440 bytes from 10.0.0.6: icmp_seq=25 ident=11092 ttl=64 time=200 ms
+[1764086769.781254] 1440 bytes from 10.0.0.6: icmp_seq=26 ident=11092 ttl=64 time=199 ms
+[1764086771.773005] 1440 bytes from 10.0.0.6: icmp_seq=28 ident=11092 ttl=64 time=185 ms
+[1764086772.778562] 1440 bytes from 10.0.0.6: icmp_seq=29 ident=11092 ttl=64 time=186 ms
+
+--- 10.0.0.6 ping statistics ---
+30 packets transmitted, 14 received, 53.3333% packet loss, time 29539ms
+rtt min/avg/max/mdev = 184.070/197.525/230.440/11.943 ms

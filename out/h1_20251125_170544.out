@@ -1,0 +1,20 @@
+ai->ai_family: AF_INET, ai->ai_canonname: '10.0.0.4'
+PING 10.0.0.4 (10.0.0.4) 1432(1460) bytes of data.
+[1764086747.148454] From 10.0.0.1 icmp_seq=1 Destination Host Unreachable
+[1764086747.149302] From 10.0.0.1 icmp_seq=2 Destination Host Unreachable
+[1764086747.149678] From 10.0.0.1 icmp_seq=3 Destination Host Unreachable
+[1764086747.149692] From 10.0.0.1 icmp_seq=4 Destination Host Unreachable
+[1764086752.453562] 1440 bytes from 10.0.0.4: icmp_seq=9 ident=11089 ttl=64 time=190 ms
+[1764086754.501939] 1440 bytes from 10.0.0.4: icmp_seq=11 ident=11089 ttl=64 time=193 ms
+[1764086756.556873] 1440 bytes from 10.0.0.4: icmp_seq=13 ident=11089 ttl=64 time=196 ms
+[1764086757.550679] 1440 bytes from 10.0.0.4: icmp_seq=14 ident=11089 ttl=64 time=187 ms
+[1764086758.564871] 1440 bytes from 10.0.0.4: icmp_seq=15 ident=11089 ttl=64 time=200 ms
+[1764086759.561141] 1440 bytes from 10.0.0.4: icmp_seq=16 ident=11089 ttl=64 time=190 ms
+[1764086766.745575] 1440 bytes from 10.0.0.4: icmp_seq=23 ident=11089 ttl=64 time=210 ms
+[1764086769.831295] 1440 bytes from 10.0.0.4: icmp_seq=26 ident=11089 ttl=64 time=227 ms
+[1764086770.798251] 1440 bytes from 10.0.0.4: icmp_seq=27 ident=11089 ttl=64 time=193 ms
+[1764086772.808431] 1440 bytes from 10.0.0.4: icmp_seq=29 ident=11089 ttl=64 time=195 ms
+
+--- 10.0.0.4 ping statistics ---
+30 packets transmitted, 10 received, +4 errors, 66.6667% packet loss, time 29565ms
+rtt min/avg/max/mdev = 186.566/197.916/226.876/11.429 ms, pipe 4

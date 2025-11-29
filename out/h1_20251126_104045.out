@@ -1,0 +1,24 @@
+ai->ai_family: AF_INET, ai->ai_canonname: '10.0.0.4'
+PING 10.0.0.4 (10.0.0.4) 10000(10028) bytes of data.
+[1764150045.828365] 10008 bytes from 10.0.0.4: icmp_seq=1 ident=15441 ttl=64 time=434 ms
+[1764150046.603751] 10008 bytes from 10.0.0.4: icmp_seq=2 ident=15441 ttl=64 time=208 ms
+[1764150047.616000] 10008 bytes from 10.0.0.4: icmp_seq=3 ident=15441 ttl=64 time=218 ms
+[1764150049.634896] 10008 bytes from 10.0.0.4: icmp_seq=5 ident=15441 ttl=64 time=197 ms
+[1764150051.709637] 10008 bytes from 10.0.0.4: icmp_seq=7 ident=15441 ttl=64 time=214 ms
+[1764150052.726792] 10008 bytes from 10.0.0.4: icmp_seq=8 ident=15441 ttl=64 time=228 ms
+[1764150053.772252] 10008 bytes from 10.0.0.4: icmp_seq=9 ident=15441 ttl=64 time=272 ms
+[1764150054.779444] 10008 bytes from 10.0.0.4: icmp_seq=10 ident=15441 ttl=64 time=277 ms
+[1764150058.843614] 10008 bytes from 10.0.0.4: icmp_seq=14 ident=15441 ttl=64 time=253 ms
+[1764150060.858918] 10008 bytes from 10.0.0.4: icmp_seq=16 ident=15441 ttl=64 time=221 ms
+[1764150061.835083] 10008 bytes from 10.0.0.4: icmp_seq=17 ident=15441 ttl=64 time=197 ms
+[1764150062.864952] 10008 bytes from 10.0.0.4: icmp_seq=18 ident=15441 ttl=64 time=225 ms
+[1764150064.894265] 10008 bytes from 10.0.0.4: icmp_seq=20 ident=15441 ttl=64 time=225 ms
+[1764150066.914113] 10008 bytes from 10.0.0.4: icmp_seq=22 ident=15441 ttl=64 time=197 ms
+[1764150067.923617] 10008 bytes from 10.0.0.4: icmp_seq=23 ident=15441 ttl=64 time=206 ms
+[1764150068.942214] 10008 bytes from 10.0.0.4: icmp_seq=24 ident=15441 ttl=64 time=222 ms
+[1764150069.917624] 10008 bytes from 10.0.0.4: icmp_seq=25 ident=15441 ttl=64 time=198 ms
+[1764150071.973120] 10008 bytes from 10.0.0.4: icmp_seq=27 ident=15441 ttl=64 time=196 ms
+
+--- 10.0.0.4 ping statistics ---
+30 packets transmitted, 18 received, 40% packet loss, time 29450ms
+rtt min/avg/max/mdev = 196.255/232.717/434.108/54.345 ms

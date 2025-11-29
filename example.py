@@ -65,9 +65,9 @@ def dumpFlows(controller, cliClosed):
 		print("Dumping flows before opening CLI...")
 	else:
 		print("CLI closed, dumping flows...")
-	c.cmdPrint(f"dpctl dump-flows tcp:localhost:6654")
+	c.cmdPrint("dpctl dump-flows tcp:localhost:6654")
 	print("-----------------------------------------------------")
-	c.cmdPrint(f"ovs-ofctl dump-flows s2")
+	c.cmdPrint(f"ovs-ofctl dump-flows s1")
 	print("Dumping complete, starting CLI...\n",
 		  "=====================================================")
 

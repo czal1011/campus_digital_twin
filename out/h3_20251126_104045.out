@@ -1,0 +1,29 @@
+ai->ai_family: AF_INET, ai->ai_canonname: '10.0.0.6'
+PING 10.0.0.6 (10.0.0.6) 10000(10028) bytes of data.
+[1764150045.855439] 10008 bytes from 10.0.0.6: icmp_seq=1 ident=15443 ttl=64 time=449 ms
+[1764150046.627336] 10008 bytes from 10.0.0.6: icmp_seq=2 ident=15443 ttl=64 time=212 ms
+[1764150047.671231] 10008 bytes from 10.0.0.6: icmp_seq=3 ident=15443 ttl=64 time=250 ms
+[1764150048.622653] 10008 bytes from 10.0.0.6: icmp_seq=4 ident=15443 ttl=64 time=203 ms
+[1764150050.689229] 10008 bytes from 10.0.0.6: icmp_seq=6 ident=15443 ttl=64 time=225 ms
+[1764150051.677679] 10008 bytes from 10.0.0.6: icmp_seq=7 ident=15443 ttl=64 time=207 ms
+[1764150052.675720] 10008 bytes from 10.0.0.6: icmp_seq=8 ident=15443 ttl=64 time=204 ms
+[1764150053.743674] 10008 bytes from 10.0.0.6: icmp_seq=9 ident=15443 ttl=64 time=259 ms
+[1764150054.752751] 10008 bytes from 10.0.0.6: icmp_seq=10 ident=15443 ttl=64 time=263 ms
+[1764150055.769081] 10008 bytes from 10.0.0.6: icmp_seq=11 ident=15443 ttl=64 time=277 ms
+[1764150056.784613] 10008 bytes from 10.0.0.6: icmp_seq=12 ident=15443 ttl=64 time=287 ms
+[1764150057.773890] 10008 bytes from 10.0.0.6: icmp_seq=13 ident=15443 ttl=64 time=274 ms
+[1764150058.743636] 10008 bytes from 10.0.0.6: icmp_seq=14 ident=15443 ttl=64 time=239 ms
+[1764150059.705860] 10008 bytes from 10.0.0.6: icmp_seq=15 ident=15443 ttl=64 time=197 ms
+[1764150061.728393] 10008 bytes from 10.0.0.6: icmp_seq=17 ident=15443 ttl=64 time=196 ms
+[1764150062.734541] 10008 bytes from 10.0.0.6: icmp_seq=18 ident=15443 ttl=64 time=200 ms
+[1764150065.763069] 10008 bytes from 10.0.0.6: icmp_seq=21 ident=15443 ttl=64 time=196 ms
+[1764150067.808165] 10008 bytes from 10.0.0.6: icmp_seq=23 ident=15443 ttl=64 time=195 ms
+[1764150068.812036] 10008 bytes from 10.0.0.6: icmp_seq=24 ident=15443 ttl=64 time=198 ms
+[1764150069.814038] 10008 bytes from 10.0.0.6: icmp_seq=25 ident=15443 ttl=64 time=199 ms
+[1764150071.844605] 10008 bytes from 10.0.0.6: icmp_seq=27 ident=15443 ttl=64 time=200 ms
+[1764150072.848075] 10008 bytes from 10.0.0.6: icmp_seq=28 ident=15443 ttl=64 time=196 ms
+[1764150074.852705] 10008 bytes from 10.0.0.6: icmp_seq=30 ident=15443 ttl=64 time=199 ms
+
+--- 10.0.0.6 ping statistics ---
+30 packets transmitted, 23 received, 23.3333% packet loss, time 29245ms
+rtt min/avg/max/mdev = 195.430/231.569/449.051/55.333 ms

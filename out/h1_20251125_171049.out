@@ -1,0 +1,7 @@
+ai->ai_family: AF_INET, ai->ai_canonname: '10.0.0.4'
+PING 10.0.0.4 (10.0.0.4) 4088(4116) bytes of data.
+[1764087052.613852] From 10.0.0.1 icmp_seq=1 Destination Host Unreachable
+[1764087052.613963] From 10.0.0.1 icmp_seq=2 Destination Host Unreachable
+[1764087052.613974] From 10.0.0.1 icmp_seq=3 Destination Host Unreachable
+[1764087055.903932] 4096 bytes from 10.0.0.4: icmp_seq=7 ident=13745 ttl=64 time=219 ms
+[1764087057.945517] 4096 bytes from 10.0.0.4: icmp_seq=9 ident=13745 ttl=64 time=212 ms

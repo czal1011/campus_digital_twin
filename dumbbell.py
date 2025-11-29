@@ -17,7 +17,6 @@ class DumbbellTopo(Topo):
 		s2 = self.addSwitch('s2')
 		
 		# create hosts
-		
 		h1 = self.addHost('h1', ip='10.0.0.1')
 		h2 = self.addHost('h2', ip='10.0.0.2')
 		h3 = self.addHost('h3', ip='10.0.0.3')
@@ -35,7 +34,7 @@ class DumbbellTopo(Topo):
 		
 		# scenarios
 		#self.addLink(s1, s2, bw=10, delay='50ms', max_queue_size=100, use_htb=True)
-		self.addLink(s1, s2, bw=10, delay='50ms', loss=30, max_queue_size=100, use_htb=True)
+		self.addLink(s1, s2, bw=10, delay='50ms', loss=3, max_queue_size=100, use_htb=True)
 		
 # create Topology
 def createTopo(controller, **kwargs):
@@ -43,52 +42,42 @@ def createTopo(controller, **kwargs):
 	return Mininet(topo=topo, link=TCLink, controller=controller, **kwargs)
 
 
-def monitorHosts(controller, time=10, packetsize=56, **netkwargs):
-	topo = DumbbellTopo()
-	net = Mininet(topo=topo, link=TCLink, controller=controller, listenPort=6654, **netkwargs)
-	net.start()
+def monitorHosts(net, time=10, packetsize=56, **kwargs):
 	hosts = net.hosts
 	outfiles, errfiles = {}, {}
 	
 	dt = datetime.now().strftime('%Y%m%d_%H%M%S')
 	
-	outfiles['h1'] = f'./out/h1_{dt}.out'
-	errfiles['h1'] = f'./out/h1_{dt}.err'
-	net['h1'].cmd('echo >', outfiles['h1'])
-	net['h1'].cmd('echo >', errfiles['h1'])
+	outfilesPath = './out/'
+	errfilesPath = './out/err/'
 	
-	outfiles['h2'] = f'./out/h2_{dt}.out'
-	errfiles['h2'] = f'./out/h2_{dt}.err'
-	net['h2'].cmd('echo >', outfiles['h2'])
-	net['h2'].cmd('echo >', errfiles['h2'])
-	
-	outfiles['h3'] = f'./out/h3_{dt}.out'
-	errfiles['h3'] = f'./out/h3_{dt}.err'
-	net['h3'].cmd('echo >', outfiles['h3'])
-	net['h3'].cmd('echo >', errfiles['h3'])
+	for host in ['h1','h2','h3']:
+		outfiles[host] = f'{outfilesPath}{host}_{dt}.out'
+		errfiles[host] = f'{errfilesPath}{host}_{dt}.err'
+		net[host].cmd('echo >', outfiles[host])
+		net[host].cmd('echo >', errfiles[host])
 		
-	net['h1'].cmdPrint(f'ping -v -c 30 -s {packetsize}', net['h4'].IP(), '>', outfiles['h1'], '2>', errfiles['h1'], '&')
-	net['h2'].cmdPrint(f'ping -v -c 30 -s {packetsize}', net['h5'].IP(), '>', outfiles['h2'], '2>', errfiles['h2'], '&')
-	net['h3'].cmdPrint(f'ping -v -c 30 -s {packetsize}', net['h6'].IP(), '>', outfiles['h3'], '2>', errfiles['h3'], '&')
+	net['h1'].cmdPrint(f'ping -D -a -v -c 30 -s {packetsize}', net['h4'].IP(), '>', outfiles['h1'], '2>', errfiles['h1'], '&')
+	net['h2'].cmdPrint(f'ping -D -a -v -c 30 -s {packetsize}', net['h5'].IP(), '>', outfiles['h2'], '2>', errfiles['h2'], '&')
+	net['h3'].cmdPrint(f'ping -D -a -v -c 30 -s {packetsize}', net['h6'].IP(), '>', outfiles['h3'], '2>', errfiles['h3'], '&')
 	
 	print(f"Monitoring output for {time} seconds...")
-	for h, line in monitorFiles(outfiles, time+1, timeoutms=500):
+	for h, line in monitorFiles(outfiles, time+2, timeoutms=500):
 		if h:
-			print(f"[{h}], {line}")
+			print(f"<{h}> {line}")
+	
 	for h in hosts:
 		h.cmd('kill %ping')
-	#CLI(net)	
-	net.stop()
-	
-#def ping(net):
 
 if __name__ == '__main__':
-	c = OVSController("c1")
 	lg.setLogLevel('info')
 	
-	monitorHosts(controller=c, time=30, packetsize=1432)
-	#net = createTopo(c, listenPort=6654)
-	#net.start()
+	c = OVSController("c1") # create controller
+	net = createTopo(c, listenPort=6654) # create Mininet (incl. topology)
 	
-	#print("\n### Stopping Mininet...\n")
-	#net.stop()
+	net.start() # start the Mininet
+	
+	monitorHosts(net=net, time=30, packetsize=32760) # ping data from one side of the dumbbell to the other, and dump statistics into their own files
+	
+	print("\n### Stopping Mininet...\n")
+	net.stop()

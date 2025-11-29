@@ -1,0 +1,27 @@
+ai->ai_family: AF_INET, ai->ai_canonname: '10.0.0.5'
+PING 10.0.0.5 (10.0.0.5) 10000(10028) bytes of data.
+[1764150047.695008] 10008 bytes from 10.0.0.5: icmp_seq=3 ident=15442 ttl=64 time=220 ms
+[1764150048.681765] 10008 bytes from 10.0.0.5: icmp_seq=4 ident=15442 ttl=64 time=200 ms
+[1764150049.682928] 10008 bytes from 10.0.0.5: icmp_seq=5 ident=15442 ttl=64 time=199 ms
+[1764150051.769979] 10008 bytes from 10.0.0.5: icmp_seq=7 ident=15442 ttl=64 time=206 ms
+[1764150052.784188] 10008 bytes from 10.0.0.5: icmp_seq=8 ident=15442 ttl=64 time=220 ms
+[1764150054.863810] 10008 bytes from 10.0.0.5: icmp_seq=10 ident=15442 ttl=64 time=209 ms
+[1764150055.903059] 10008 bytes from 10.0.0.5: icmp_seq=11 ident=15442 ttl=64 time=213 ms
+[1764150056.930040] 10008 bytes from 10.0.0.5: icmp_seq=12 ident=15442 ttl=64 time=229 ms
+[1764150058.928318] 10008 bytes from 10.0.0.5: icmp_seq=14 ident=15442 ttl=64 time=200 ms
+[1764150059.926627] 10008 bytes from 10.0.0.5: icmp_seq=15 ident=15442 ttl=64 time=196 ms
+[1764150060.937090] 10008 bytes from 10.0.0.5: icmp_seq=16 ident=15442 ttl=64 time=200 ms
+[1764150061.933880] 10008 bytes from 10.0.0.5: icmp_seq=17 ident=15442 ttl=64 time=197 ms
+[1764150062.933261] 10008 bytes from 10.0.0.5: icmp_seq=18 ident=15442 ttl=64 time=196 ms
+[1764150065.017032] 10008 bytes from 10.0.0.5: icmp_seq=20 ident=15442 ttl=64 time=220 ms
+[1764150066.038436] 10008 bytes from 10.0.0.5: icmp_seq=21 ident=15442 ttl=64 time=237 ms
+[1764150068.008973] 10008 bytes from 10.0.0.5: icmp_seq=23 ident=15442 ttl=64 time=203 ms
+[1764150069.022389] 10008 bytes from 10.0.0.5: icmp_seq=24 ident=15442 ttl=64 time=214 ms
+[1764150070.009169] 10008 bytes from 10.0.0.5: icmp_seq=25 ident=15442 ttl=64 time=200 ms
+[1764150071.010323] 10008 bytes from 10.0.0.5: icmp_seq=26 ident=15442 ttl=64 time=200 ms
+[1764150073.058415] 10008 bytes from 10.0.0.5: icmp_seq=28 ident=15442 ttl=64 time=197 ms
+[1764150075.185001] 10008 bytes from 10.0.0.5: icmp_seq=30 ident=15442 ttl=64 time=258 ms
+
+--- 10.0.0.5 ping statistics ---
+30 packets transmitted, 21 received, 30% packet loss, time 29525ms
+rtt min/avg/max/mdev = 195.511/210.310/258.447/15.683 ms

@@ -1,0 +1,8 @@
+ai->ai_family: AF_INET, ai->ai_canonname: '10.0.0.6'
+PING 10.0.0.6 (10.0.0.6) 1432(1460) bytes of data.
+1440 bytes from 10.0.0.6: icmp_seq=1 ident=5236 ttl=64 time=1406 ms
+1440 bytes from 10.0.0.6: icmp_seq=2 ident=5236 ttl=64 time=352 ms
+1440 bytes from 10.0.0.6: icmp_seq=6 ident=5236 ttl=64 time=197 ms
+1440 bytes from 10.0.0.6: icmp_seq=7 ident=5236 ttl=64 time=187 ms
+1440 bytes from 10.0.0.6: icmp_seq=8 ident=5236 ttl=64 time=165 ms
+1440 bytes from 10.0.0.6: icmp_seq=9 ident=5236 ttl=64 time=166 ms

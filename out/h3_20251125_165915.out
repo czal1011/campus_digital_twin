@@ -1,0 +1,15 @@
+ai->ai_family: AF_INET, ai->ai_canonname: '10.0.0.6'
+PING 10.0.0.6 (10.0.0.6) 1432(1460) bytes of data.
+[1764086356.580528] 1440 bytes from 10.0.0.6: icmp_seq=1 ident=9218 ttl=64 time=1469 ms
+[1764086360.456531] 1440 bytes from 10.0.0.6: icmp_seq=6 ident=9218 ttl=64 time=195 ms
+[1764086363.550792] 1440 bytes from 10.0.0.6: icmp_seq=9 ident=9218 ttl=64 time=209 ms
+[1764086366.608386] 1440 bytes from 10.0.0.6: icmp_seq=12 ident=9218 ttl=64 time=204 ms
+[1764086367.602117] 1440 bytes from 10.0.0.6: icmp_seq=13 ident=9218 ttl=64 time=197 ms
+[1764086371.667818] 1440 bytes from 10.0.0.6: icmp_seq=17 ident=9218 ttl=64 time=198 ms
+[1764086375.789393] 1440 bytes from 10.0.0.6: icmp_seq=21 ident=9218 ttl=64 time=227 ms
+[1764086377.801274] 1440 bytes from 10.0.0.6: icmp_seq=23 ident=9218 ttl=64 time=195 ms
+[1764086378.806426] 1440 bytes from 10.0.0.6: icmp_seq=24 ident=9218 ttl=64 time=198 ms
+[1764086379.795759] 1440 bytes from 10.0.0.6: icmp_seq=25 ident=9218 ttl=64 time=186 ms
+[1764086380.798061] 1440 bytes from 10.0.0.6: icmp_seq=26 ident=9218 ttl=64 time=186 ms
+[1764086382.854923] 1440 bytes from 10.0.0.6: icmp_seq=28 ident=9218 ttl=64 time=193 ms
+[1764086384.902535] 1440 bytes from 10.0.0.6: icmp_seq=30 ident=9218 ttl=64 time=194 ms

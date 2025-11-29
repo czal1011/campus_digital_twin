@@ -1,0 +1,10 @@
+ai->ai_family: AF_INET, ai->ai_canonname: '10.0.0.4'
+PING 10.0.0.4 (10.0.0.4) 10000(10028) bytes of data.
+[1764150027.930441] 10008 bytes from 10.0.0.4: icmp_seq=3 ident=15110 ttl=64 time=317 ms
+[1764150028.875016] 10008 bytes from 10.0.0.4: icmp_seq=4 ident=15110 ttl=64 time=256 ms
+[1764150030.823143] 10008 bytes from 10.0.0.4: icmp_seq=6 ident=15110 ttl=64 time=202 ms
+[1764150031.860644] 10008 bytes from 10.0.0.4: icmp_seq=7 ident=15110 ttl=64 time=234 ms
+[1764150032.859115] 10008 bytes from 10.0.0.4: icmp_seq=8 ident=15110 ttl=64 time=229 ms
+[1764150033.888909] 10008 bytes from 10.0.0.4: icmp_seq=9 ident=15110 ttl=64 time=258 ms
+[1764150034.899881] 10008 bytes from 10.0.0.4: icmp_seq=10 ident=15110 ttl=64 time=267 ms
+[1764150037.035510] 10008 bytes from 10.0.0.4: icmp_seq=12 ident=15110 ttl=64 time=334 ms
