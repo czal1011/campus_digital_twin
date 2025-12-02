@@ -4,9 +4,13 @@ from mininet.node import CPULimitedHost, OVSController
 from mininet.link import TCLink
 from mininet.util import dumpNodeConnections
 from mininet.log import lg
+from mininet.clean import cleanup
 from mininet.cli import CLI
 from mininet.examples.multipoll import monitorFiles
 from datetime import datetime
+import argparse
+
+log_level = "info"
 
 class DumbbellTopo(Topo):
 	def __init__(self):
@@ -68,16 +72,43 @@ def monitorHosts(net, time=10, packetsize=56, **kwargs):
 	
 	for h in hosts:
 		h.cmd('kill %ping')
+		
+def iperf(net):
+	iperf_res_udp = {}
+	iperf_res_tcp = {}
+	
+	print("UDP\n")
+	iperf_res_udp[0] = net.iperf(hosts=(net['h1'], net['h4']), l4Type='UDP')
+	iperf_res_udp[1] = net.iperf(hosts=(net['h2'], net['h5']), l4Type='UDP')
+	iperf_res_udp[2] = net.iperf(hosts=(net['h3'], net['h6']), l4Type='UDP')
+	
+	print("TCP\n")
+	#iperf_res_tcp[0] = net.iperf((net['h1'], net['h4']))
+	#iperf_res_tcp[1] = net.iperf((net['h2'], net['h5']))
+	#iperf_res_tcp[2] = net.iperf((net['h3'], net['h6']))
+	return [iperf_res_udp, iperf_res_tcp]
+	
+def parse_args():
+	parser = argparse.ArgumentParser()
+	parser.add_argument("--log-level", default="info", help="Log level used by the Mininet logger.")
+	return parser.parse_args()
 
 if __name__ == '__main__':
-	lg.setLogLevel('info')
+	args = parse_args()
+	lg.setLogLevel(args.log_level)
+	print("Log level: ", args.log_level)
+	
+	cleanup()
 	
 	c = OVSController("c1") # create controller
 	net = createTopo(c, listenPort=6654) # create Mininet (incl. topology)
 	
 	net.start() # start the Mininet
 	
-	monitorHosts(net=net, time=30, packetsize=32760) # ping data from one side of the dumbbell to the other, and dump statistics into their own files
+	#monitorHosts(net=net, time=30, packetsize=32760) # ping data from one side of the dumbbell to the other, and dump statistics into their own files
+	
+	print("Performing iperf tests...\n")
+	iperf(net)
 	
 	print("\n### Stopping Mininet...\n")
 	net.stop()
