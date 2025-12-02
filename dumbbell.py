@@ -83,9 +83,9 @@ def iperf(net):
 	iperf_res_udp[2] = net.iperf(hosts=(net['h3'], net['h6']), l4Type='UDP')
 	
 	print("TCP\n")
-	#iperf_res_tcp[0] = net.iperf((net['h1'], net['h4']))
-	#iperf_res_tcp[1] = net.iperf((net['h2'], net['h5']))
-	#iperf_res_tcp[2] = net.iperf((net['h3'], net['h6']))
+	iperf_res_tcp[0] = net.iperf((net['h1'], net['h4']))
+	iperf_res_tcp[1] = net.iperf((net['h2'], net['h5']))
+	iperf_res_tcp[2] = net.iperf((net['h3'], net['h6']))
 	return [iperf_res_udp, iperf_res_tcp]
 	
 def parse_args():
