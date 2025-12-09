@@ -11,6 +11,10 @@ from datetime import datetime
 import argparse
 
 log_level = "info"
+scenario = 1
+results = {
+	
+}
 
 class DumbbellTopo(Topo):
 	def __init__(self):
@@ -37,8 +41,13 @@ class DumbbellTopo(Topo):
 		self.addLink(h6, s2, bw=100, delay='20ms', max_queue_size=100, use_htb=True)
 		
 		# scenarios
-		#self.addLink(s1, s2, bw=10, delay='50ms', max_queue_size=100, use_htb=True)
-		self.addLink(s1, s2, bw=10, delay='50ms', loss=3, max_queue_size=100, use_htb=True)
+		match scenario:
+			case 2: # very small bandwidth with no loss
+				self.addLink(s1, s2, bw=0.8, delay='50ms', loss=0, max_queue_size=100, use_htb=True)
+			case 3: # similar to the above but even smaller bandwidth
+				self.addLink(s1, s2, bw=0.2, delay='50ms', loss=0, max_queue_size=100, use_htb=True)
+			case _: # default case (1), no queue congestion but small packet loss rate
+				self.addLink(s1, s2, bw=10, delay='50ms', loss=3, max_queue_size=100, use_htb=True)
 		
 # create Topology
 def createTopo(controller, **kwargs):
@@ -46,7 +55,7 @@ def createTopo(controller, **kwargs):
 	return Mininet(topo=topo, link=TCLink, controller=controller, **kwargs)
 
 
-def monitorHosts(net, time=10, packetsize=56, **kwargs):
+def monitorHosts(net, time, packetsize, **kwargs):
 	hosts = net.hosts
 	outfiles, errfiles = {}, {}
 	
@@ -77,21 +86,19 @@ def iperf(net):
 	iperf_res_udp = {}
 	iperf_res_tcp = {}
 	
-	print("UDP\n")
 	iperf_res_udp[0] = net.iperf(hosts=(net['h1'], net['h4']), l4Type='UDP')
 	iperf_res_udp[1] = net.iperf(hosts=(net['h2'], net['h5']), l4Type='UDP')
 	iperf_res_udp[2] = net.iperf(hosts=(net['h3'], net['h6']), l4Type='UDP')
-	
-	print("TCP\n")
-	iperf_res_tcp[0] = net.iperf((net['h1'], net['h4']))
-	iperf_res_tcp[1] = net.iperf((net['h2'], net['h5']))
-	iperf_res_tcp[2] = net.iperf((net['h3'], net['h6']))
-	return [iperf_res_udp, iperf_res_tcp]
+	return [iperf_res_udp]
 	
 def parse_args():
 	parser = argparse.ArgumentParser()
-	parser.add_argument("--log-level", default="info", help="Log level used by the Mininet logger.")
+	parser.add_argument("-l", "--log-level", default="info", help="Log level used by the Mininet logger.")
+	parser.add_argument("-s", "--scenario", default=1, help="The behavior (scenario) used by the middle bottleneck link (s1 <-> s2).")
 	return parser.parse_args()
+
+def add_csv_entry():
+	
 
 if __name__ == '__main__':
 	args = parse_args()
@@ -105,9 +112,9 @@ if __name__ == '__main__':
 	
 	net.start() # start the Mininet
 	
-	#monitorHosts(net=net, time=30, packetsize=32760) # ping data from one side of the dumbbell to the other, and dump statistics into their own files
+	monitorHosts(net=net, time=30, packetsize=32760) # ping data from one side of the dumbbell to the other, and dump statistics into their own files
 	
-	print("Performing iperf tests...\n")
+	print("Performing iperf (UDP) tests...\n")
 	iperf(net)
 	
 	print("\n### Stopping Mininet...\n")
