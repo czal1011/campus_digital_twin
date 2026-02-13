@@ -10,6 +10,7 @@ from datetime import datetime
 import argparse
 import csv
 import re
+import asyncio
 
 # program arguments
 log_level = "info"
@@ -86,7 +87,7 @@ def create_topo(controller, **kwargs):
 	return Mininet(topo=topo, link=TCLink, controller=controller, **kwargs)
 
 # Custom ping function based on Mininet's Mininet.ping() (net.py) function,
-# supporting a custom count / amount and size of the packets.
+# supporting a custom count / amount and size of the packets as well as a custom timeout.
 # [Param] hosts: Hosts to send packets between. Every host sends packets to every other host.
 # [Param] count: Amount of packets to send between hosts.
 # [Param] size: Size of the packets sent between hosts.
@@ -136,31 +137,18 @@ def parsePing(ping_output):
 	rtt_max = float(rtt_stats.group(3))
 	rtt_mdev = float(rtt_stats.group(4))
 	return ploss, rtt_min, rtt_avg, rtt_max, rtt_mdev
-"""
-PING 10.0.0.4 (10.0.0.4) 56(84) bytes of data.
-64 bytes from 10.0.0.4: icmp_seq=1 ttl=64 time=393 ms
-
---- 10.0.0.4 ping statistics ---
-1 packets transmitted, 1 received, 0% packet loss, time 0ms
-rtt min/avg/max/mdev = 392.893/392.893/392.893/0.000 ms
-
-PING 10.0.0.1 (10.0.0.1) 56(84) bytes of data.
-64 bytes from 10.0.0.1: icmp_seq=1 ttl=64 time=190 ms
-
---- 10.0.0.1 ping statistics ---
-1 packets transmitted, 1 received, 0% packet loss, time 0ms
-rtt min/avg/max/mdev = 190.491/190.491/190.491/0.000 ms
-"""
 
 # Send packets over the bottleneck link and dump everything into a .txt
 # file (containing the raw ping output) and a .csv file (containing
 # various types of data about the ping process).
 def ping_test():
+	global results
 	hosts = net.hosts
 	
 	ping1 = ping(hosts=[net['h1'], net['h4']], count=packets, size=size, timeout=timeout)
 	ping2 = ping(hosts=[net['h2'], net['h5']], count=packets, size=size, timeout=timeout)
 	ping3 = ping(hosts=[net['h3'], net['h6']], count=packets, size=size, timeout=timeout)
+	
 	print("====================================")
 	print("h1 <-> h4: " + str(ping1))
 	print("====================================")
@@ -168,6 +156,14 @@ def ping_test():
 	print("====================================")
 	print("h3 <-> h6: " + str(ping3))
 	print("====================================")
+	
+	results.append(ping1[0])
+	results.append(ping2[0])
+	results.append(ping3[0])
+	results.append(ping1[1])
+	results.append(ping2[1])
+	results.append(ping3[1])
+	results.append([size, timeout, packets]) # general data about the ping test: packet size, timeout and amount. All of it will be packed out later
 	
 	for h in hosts:
 		h.cmd('kill %ping')
@@ -205,8 +201,7 @@ def convert_results_to_csv():
 		writer = csv.DictWriter(csvfile, fieldnames)
 		writer.writeheader()
 		writer.writerows(results)
-
-
+	
 if __name__ == '__main__':
 	args = parse_args()
 	lg.setLogLevel(args.log_level)
@@ -236,4 +231,4 @@ if __name__ == '__main__':
 	print("\n### Stopping Mininet...\n")
 	net.stop()
 	
-	# dump results into .csv file
+	print(str(results))
