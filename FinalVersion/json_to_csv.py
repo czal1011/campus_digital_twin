@@ -4,13 +4,11 @@
 # convert that to csv
 
 import json
-import csv
 
-folder_name: str = 'scenario_dumbbell_folder (copy)'
+folder_name: str = 'scenario_dumbbell_folder'
 file_name: str = 'iperf3_L1_to_R1_p5201.json'
 
 out_data = []
-in_data = {'throughput': [],'retransmits': [], 'snd_cwnd': [], 'bandwidth': []}
 
 # read given json file and extract metrics / collected data
 with open(folder_name + '/' + file_name, 'r') as file:
@@ -23,30 +21,20 @@ with open(folder_name + '/' + file_name, 'r') as file:
 		throughput_sum = 0
 		retransmits_sum = 0
 		snd_cwnd_sum = 0
+		snd_wnd_sum = 0
+		rttvar_sum = 0
 		# calculate new RTT sum and add the average to out_data
 		for flow in streams:
 			rtt_sum += flow['rtt']
 			throughput_sum += flow['bits_per_second']
 			retransmits_sum += flow['retransmits']
 			snd_cwnd_sum += flow['snd_cwnd']
-		out_data.append(rtt_sum / 5)
-		in_data['throughput'].append(str(throughput_sum / 5))
-		in_data['retransmits'].append(str(retransmits_sum / 5))
-		in_data['snd_cwnd'].append(str(snd_cwnd_sum / 5))
-		in_data['bandwidth'].append("10000000")
+			snd_wnd_sum += flow['snd_wnd']
+			rttvar_sum += flow['rttvar']
+		out_data.append([throughput_sum / 5, retransmits_sum / 5, snd_cwnd_sum / 5, snd_wnd_sum / 5, rttvar_sum / 5, rtt_sum / 5])
 
 
-with open(folder_name + '/output.txt', 'w', newline='') as csv_out_file:
-	wr = csv.writer(csv_out_file, quoting=csv.QUOTE_ALL)
-	wr.writerow(out_data)
-
-# convert in_data to a series of strings
-in_data['throughput'] = ', '.join(in_data['throughput'])
-in_data['retransmits'] = ', '.join(in_data['retransmits'])
-in_data['snd_cwnd'] = ', '.join(in_data['snd_cwnd'])
-in_data['bandwidth'] = ', '.join(in_data['bandwidth'])
-
-with open(folder_name + '/input.txt', 'w', newline='') as csv_in_file:
-	wr = csv.writer(csv_in_file)
-	wr.writerow(in_data.keys())
-	wr.writerow(in_data.values())
+with open(folder_name + '/data.csv', 'w', newline='') as csv_out_file:
+	csv_out_file.write("throughput,retransmits,snd_cwnd,snd_wnd,rttvar,rtt\n")
+	for tup in out_data:
+		csv_out_file.write(f"{tup[0]},{tup[1]},{tup[2]},{tup[3]},{tup[4]},{tup[5]}\n")
